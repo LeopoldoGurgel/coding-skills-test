@@ -4,7 +4,7 @@ https://leopoldogurgel.github.io/coding-skills-test/
 
 ## DESCRIPTION
 
-This is a quizz application that will test your knowledge about Javascript and Web API. This was made using mostly this same technologies along some basic CSS and HTML. Have fun!
+This is a quizz application that will test your knowledge about Javascript and Web API. Before any other letter, Thanks mark for helping me solve that bug! This was made using mostly this same technologies along some basic CSS and HTML, but made every code I did up to this day to look like childplay. Have fun!
 
 ![App landing page](./assets/images/landingPage.jpg "App landing page")
 
