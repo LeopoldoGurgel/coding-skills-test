@@ -9,6 +9,7 @@ var startButton = document.getElementById("start");
 var highscoreLS = localStorage.getItem("highscore") || 0; // this or zero
 // means that if there is no previous record of highscores, the value is 0
 var currentQuestionIndex = 0; //this will keep track of the current question
+var optionList = document.getElementById("option-list");
 
 
 // This creates the countdown function
@@ -32,19 +33,26 @@ function countdown() {
             timerEl.textContent = "Time's up!"
             // when the button appears at the end of the test, it doesn't respond to the eventListener, somehow
             // startButton.setAttribute("class", " ");
+            optionList.setAttribute("class", "hide");
             questionBoxEl.setAttribute("class", "");
             localStorage.setItem("highscore", highscoreLS);
-            questionEl.textContent = "Time is over. You scored " + right + "/6. Refresh the page if you want to start again.";
+            questionEl.textContent = "Time is over. You scored " + right + "/6. Click here if you want to try again.";
+            questionEl.addEventListener("click", function(){
+                location.reload();
+            })
         }
 
         if(currentQuestionIndex == questions.length) {
             clearInterval(timeCount);
-            timerEl.textContent = "Finished!"
+            timerEl.textContent = "Finished! Click here if you want to try again"
             // when the button appears at the end of the test, it doesn't respond to the eventListener, somehow
             // startButton.setAttribute("class", " ");
             questionBoxEl.setAttribute("class", "");
+            optionList.setAttribute("class", "hide");
             localStorage.setItem("highscore", highscoreLS);
-            
+            questionEl.addEventListener("click", function(){
+                location.reload();
+            })
         }
 
     }, 1000)
@@ -102,9 +110,7 @@ var wrong = 0;
 function startTest() {
 
     var questionEl = document.getElementById("question");
-    var optionList = document.getElementById("option-list");
-
-
+    
     //this will check if there are more incoming questions
 
     if(currentQuestionIndex < questions.length) {
@@ -209,10 +215,14 @@ startButton.addEventListener("click", countdown);
 
 // BUUUUUG !!!!
 // IF the test is over, the button will also reload the page. Or I wish it would do.... 
-if( timeLeft == 0 || currentQuestionIndex == questions.length) {
-    startButton.addEventListener("click", quizz);
-    startButton.addEventListener("click", function(){location.reload()});
-}
+// if( timeLeft == 0 || currentQuestionIndex == questions.length) {
+//     startButton.addEventListener("click", quizz);
+//     startButton.addEventListener("click", function(){location.reload()});
+// }
+
+// SOLVED!
+// I Did it by forgeting about the button and giving the finish message this same function
+
 
 };
 

@@ -1,6 +1,6 @@
 # CODING SKILLS TEST
 
-https://leopoldogurgel.github.io/.../
+https://leopoldogurgel.github.io/coding-skills-test/
 
 ## DESCRIPTION
 
@@ -22,7 +22,7 @@ If you click the highscore section, your highscore will be displayed. You can hi
 
 ![Click on the highscore to show your best result!](./assets/images/highscoreBehaviour.jpg "Click on the highscore to show your best result!")
 
-Whenever your timer reaches 0 or you answer the last question, your score will be displayed at the screen along a message telling you to refresh the page if you want to give it another try.
+Whenever your timer reaches 0 or you answer the last question, your score will be displayed at the screen along a message telling you to click at it if you want to give it another try.
 
 ![Test is over!](./assets/images/testEnd.jpg "Test is over!")
 
