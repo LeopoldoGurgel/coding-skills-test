@@ -8,6 +8,7 @@ var questionEl = document.getElementById("question");
 var startButton = document.getElementById("start");
 var highscoreLS = localStorage.getItem("highscore") || 0; // this or zero
 // means that if there is no previous record of highscores, the value is 0
+var currentQuestionIndex = 0; //this will keep track of the current question
 
 
 // This creates the countdown function
@@ -31,6 +32,15 @@ function countdown() {
             timerEl.textContent = "Time's up!"
             startButton.setAttribute("class", " ");
             questionBoxEl.setAttribute("class", "");
+            localStorage.setItem("highscore", highscoreLS);
+        }
+
+        if(currentQuestionIndex == questions.length) {
+            clearInterval(timeCount);
+            timerEl.textContent = "Finished!"
+            startButton.setAttribute("class", " ");
+            questionBoxEl.setAttribute("class", "");
+            localStorage.setItem("highscore", highscoreLS);
         }
 
     }, 1000)
@@ -115,11 +125,11 @@ function startTest() {
             function createClickHandler(index) {
                 return function () {
                         if (index === thisQuestion.answer) {
-                        right++;
+                        ++right;
                     } else {
                         wrong++;
                     }
-                    
+                    currentQuestionIndex++;
                     startTest(); // Move to the next question
                 };
             }
@@ -128,7 +138,6 @@ function startTest() {
             optionLI.addEventListener("click", createClickHandler(i));
             
         }
-        optionLI.addEventListener("click", currentQuestionIndex++);
 
         // !!! BUUUUUUGGGG !!!
         // The highscore counter only goes up to five
@@ -164,7 +173,15 @@ function startTest() {
 
         // this reset the count for right and wrong answers as soon
         // as there are no questions left in questions.length
-
+        
+        if (right > highscoreLS) {
+            highscoreLS = right;
+            localStorage.setItem("highscore", highscoreLS);
+        }
+        console.log(right);
+        console.log(wrong);
+        console.log(highscoreLS);
+        localStorage.setItem("highscore", highscoreLS);
         questionEl.textContent = "Your Test is over. You scored " + right + "/6.";
         right = 0;
         wrong = 0;
