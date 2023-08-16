@@ -159,6 +159,14 @@ function startTest() {
         //     startTest(); // Move to the next question
         // });
 
+
+        // SOOOOOOOLVED!!!!!
+
+        // The bug was happening because the console.log's and the localStorage.setItem
+        // were inside the conditional if(currentQuestionIndex < questions.length)
+        // and not inside the else statement. So whenever currentQuestionIndex == questions.length
+        // no console would be called and the highscore wouldn't be 
+
             if (right > highscoreLS) {
                 highscoreLS = right;
                 localStorage.setItem("highscore", highscoreLS);
