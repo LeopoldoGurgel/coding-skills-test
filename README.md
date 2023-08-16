@@ -14,7 +14,7 @@ At the landing page you will find a highscore section, a start button and the pl
 
 If you click the start button, the first question will appear and your timer will start counting down from 60 seconds.
 When you answer the question, the next one will will replace the
-question you just answered.
+question you just answered. But watch out! If your answer is not the right one, you will loose 20 seconds from your remaining time! MWA HA HA HA HA HA!!!
 
 ![Test began!](./assets/images/runningTest.jpg "Test when it's running.")
 
@@ -22,7 +22,7 @@ If you click the highscore section, your highscore will be displayed. You can hi
 
 ![Click on the highscore to show your best result!](./assets/images/highscoreBehaviour.jpg "Click on the highscore to show your best result!")
 
-Whenever your timer reaches 0 or you answer the last question, your score will be displayed at the screen along a message telling you to click at it if you want to give it another try.
+Whenever your timer reaches 0 or you answer the last question, your score will be displayed at the screen along with a form to enter your Initials and a message telling you to click at it if you want to give it another try.
 
 ![Test is over!](./assets/images/testEnd.jpg "Test is over!")
 

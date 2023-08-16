@@ -140,6 +140,7 @@ function startTest() {
                         ++right;
                     } else {
                         wrong++;
+                        timeLeft = timeLeft - 20;
                     }
                     currentQuestionIndex++;
                     startTest(); // Move to the next question
