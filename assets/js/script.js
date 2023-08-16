@@ -16,7 +16,7 @@ var currentQuestionIndex = 0; //this will keep track of the current question
 // And the questions tho show when the timer start
 var timeLeft = 60;
 function countdown() {
-    
+    clearInterval(countdown);
 
     var timeCount = setInterval(function() {
         timerEl.textContent = "Seconds left: " + timeLeft + " sec.";
@@ -30,17 +30,21 @@ function countdown() {
         if (timeLeft == 0) {
             clearInterval(timeCount);
             timerEl.textContent = "Time's up!"
-            startButton.setAttribute("class", " ");
+            // when the button appears at the end of the test, it doesn't respond to the eventListener, somehow
+            // startButton.setAttribute("class", " ");
             questionBoxEl.setAttribute("class", "");
             localStorage.setItem("highscore", highscoreLS);
+            questionEl.textContent = "Time is over. You scored " + right + "/6. Refresh the page if you want to start again.";
         }
 
         if(currentQuestionIndex == questions.length) {
             clearInterval(timeCount);
             timerEl.textContent = "Finished!"
-            startButton.setAttribute("class", " ");
+            // when the button appears at the end of the test, it doesn't respond to the eventListener, somehow
+            // startButton.setAttribute("class", " ");
             questionBoxEl.setAttribute("class", "");
             localStorage.setItem("highscore", highscoreLS);
+            
         }
 
     }, 1000)
@@ -198,11 +202,17 @@ function startTest() {
 }
 
 
-
 // Im adding event listeners to start the timer and run the questions.
 
 startButton.addEventListener("click", startTest);
 startButton.addEventListener("click", countdown);
+
+// BUUUUUG !!!!
+// IF the test is over, the button will also reload the page. Or I wish it would do.... 
+if( timeLeft == 0 || currentQuestionIndex == questions.length) {
+    startButton.addEventListener("click", quizz);
+    startButton.addEventListener("click", function(){location.reload()});
+}
 
 };
 
