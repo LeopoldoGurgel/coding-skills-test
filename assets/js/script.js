@@ -36,7 +36,8 @@ function countdown() {
             optionList.setAttribute("class", "hide");
             questionBoxEl.setAttribute("class", "");
             localStorage.setItem("highscore", highscoreLS);
-            questionEl.textContent = "Time is over. You scored " + right + "/6. Click here if you want to try again.";
+            // solved the button problem by giving this function to the questionEl instead
+            questionEl.textContent = "Time is over! You scored " + right + "/6. Click here to start the test again"
             questionEl.addEventListener("click", function(){
                 location.reload();
             })
@@ -44,12 +45,13 @@ function countdown() {
 
         if(currentQuestionIndex == questions.length) {
             clearInterval(timeCount);
-            timerEl.textContent = "Finished! Click here if you want to try again"
+            timerEl.textContent = "Finished!"
             // when the button appears at the end of the test, it doesn't respond to the eventListener, somehow
             // startButton.setAttribute("class", " ");
             questionBoxEl.setAttribute("class", "");
             optionList.setAttribute("class", "hide");
             localStorage.setItem("highscore", highscoreLS);
+            // solved the button problem by giving this function to the questionEl instead
             questionEl.addEventListener("click", function(){
                 location.reload();
             })
@@ -200,7 +202,7 @@ function startTest() {
         console.log(wrong);
         console.log(highscoreLS);
         localStorage.setItem("highscore", highscoreLS);
-        questionEl.textContent = "Your Test is over. You scored " + right + "/6.";
+        questionEl.textContent = "Your Test is over. You scored " + right + "/6. Click here to start again.";
         right = 0;
         wrong = 0;
     }
